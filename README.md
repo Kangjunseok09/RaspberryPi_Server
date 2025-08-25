@@ -1,1 +1,1 @@
-Hello, My name is kangjunseok.
+Hello, my name is kangjunseok.
