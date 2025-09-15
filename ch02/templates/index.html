@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>클릭 시 숫자 증가</h2>
+    <h1 id="count">0</h1>
+    <button style="background: #5c5cff; border-radius: 5px; color: aliceblue; border: none; padding: 6px; cursor: pointer;" onclick="display_counter()">수 증가</button>
+    <button style="background: green; border-radius: 5px; color: aliceblue; border: none; padding: 6px; cursor: pointer" id="send">전송</button>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
