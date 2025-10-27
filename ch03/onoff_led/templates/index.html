@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+  <title>LED</title>
+  <style>
+    body {
+      font-family: "SUSE Mono", monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;   
+      justify-content: center; 
+      height: 100vh;  
+      margin: 0;
+    }
+
+    #on-off-title {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    #led { 
+      width: 500px;
+      margin-bottom: 20px;
+    }
+
+    .btn-container {
+      display: flex;
+      gap: 20px; 
+    }
+
+    #on-btn {
+      background-color: rgb(115, 113, 233);
+      border-radius: 6px;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      font-size: 18px;
+    }
+
+    #off-btn {
+      background-color: rgb(205, 124, 124);
+      border-radius: 6px;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="on-off-title">LED ON / OFF</h1>
+  
+  <img id="led" src="./static/off.png" alt="LED">
+
+  <div class="btn-container">
+    <button id="on-btn" onClick="turnON()">ON</button>
+    <button id="off-btn" onClick="turnOFF()">OFF</button>
+  </div>
+
+  <script src="../static/index.js"></script>
+</body>
+</html>

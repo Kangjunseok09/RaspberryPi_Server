@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet">
+  <title>Servo Motor</title>
+
+  <style>
+    .SN {
+      font-size: 40px;
+      color: rgb(189, 189, 189);
+    }
+
+    body {
+      font-family: "SUSE Mono", monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .Main-Title {
+      font-size: 80px;
+    }
+
+    .expain {
+      font-size: 40px;
+      color: #8be285;
+      padding: 3px;
+    }
+
+    .Container {
+      border: 2px solid #b6b6b6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .Main-Title span:nth-child(1) {
+      color: #5f8be3;
+      opacity: 0.6;
+    }
+
+    .Main-Title span:nth-child(2) {
+      color: #8be285;
+      opacity: 0.6;
+    }
+
+
+    .Input {
+      height: 70px;
+      font-size: 50px;
+      padding: 5px;
+      color: rgb(208, 208, 208);
+    }
+
+    #setAngle {
+      color: white;
+      font-size: 50px;
+      height: 90px;
+      background-color: #9de2ec;
+      border-radius: 18px;
+      cursor: pointer;
+      border: 2px solid white;
+      font-family: "SUSE Mono", monospace;
+    }
+  </style>
+
+</head>
+
+<body>
+  <p class="SN">1201 강준석, 1207 박성준</p>
+
+  <h1 class="Main-Title">
+    <span>Servo Motor</span>
+    <span>Control</span>
+  </h1>
+
+  <div class="Container">
+    <p class="expain">Enter Angle (0 ~ 180) : </p>
+    <input id="angle" class="Input">
+    <button id="setAngle" class="setAngle">Set Angle</button>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="../static/index.js"></script>
+</body>
+
+</html>

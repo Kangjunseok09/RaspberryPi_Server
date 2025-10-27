@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet">
+  <title>LED</title>
+  <style>
+    body {
+      font-family: "SUSE Mono", monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #on-off-title {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    #led {
+      width: 500px;
+      margin-bottom: 20px;
+    }
+
+    .btn-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    #red-btn {
+      background-color: rgb(205, 124, 124);
+      border-radius: 6px;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      font-size: 18px;
+    }
+
+    #green-btn {
+      background-color: rgb(104, 188, 100);
+      border-radius: 6px;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      font-size: 18px;
+    }
+
+    #yellow-btn {
+      background-color: rgb(220, 222, 109);
+      border-radius: 6px;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      font-size: 18px;
+    }
+
+    #gray-btn {
+      background-color: rgb(163, 163, 163);
+      border-radius: 6px;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="on-off-title">아기 돌프 3형제</h1>
+  <p id="SN">1201 강준석, 1207 박성준</p>
+
+  <img id="led" src="./static/gray.png">
+
+  <div class="btn-container">
+    <button id="red-btn" onClick="Red()">돌푸 코 만지기</button>
+    <button id="yellow-btn" onClick="Yellow()">루루 코 만지기</button>
+    <button id="green-btn" onClick="Green()">루돌이 코 만지기</button>
+    <button id="gray-btn" onClick="Gray()">돌프 코 뽑기</button>
+
+  </div>
+
+  <script src="../static/index.js"></script>
+</body>
+
+</html>

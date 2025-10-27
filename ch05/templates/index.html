@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>습도계 Let's Go</title>
+</head>
+
+<body>
+    <h2 class="SN">1201 강준석 - 1207 박성준</h2>
+    <div class="Btn-container">
+        <button id="Now">Now</button>
+        <button id="Record">Record</button>
+    </div>
+
+    <table border="1" class="table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Date Time</th>
+                <th>Temperature (°C)</th>
+                <th>Humidity (%)</th>
+            </tr>
+        </thead>
+        <tbody id="table">
+        </tbody>
+    </table>
+</body>
+
+<style>
+    .SN {
+        color: rgb(182, 182, 182);
+        font-size: 3em;
+    }
+
+    .Btn-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    #Now {
+        font-size: 35px;
+        color: white;
+        background-color: #a9a9e3;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    #Now:hover {
+        transform: scale(1.08);
+        background-color: #444495;
+    }
+
+    #Record {
+        font-size: 35px;
+        color: white;
+        background-color: #a0e4a0;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    #Record:hover {
+        transform: scale(1.08);
+        background-color: #398239;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    th,
+    td {
+        border: 2px solid #d8d8d8;
+        padding: 12px;
+    }
+
+    th {
+        background-color: #f7f7f7;
+        font-weight: bold;
+    }
+
+    td {
+        font-size: 14px;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="static/index.js"></script>
+
+</html>
