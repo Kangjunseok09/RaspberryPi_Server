@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('/fonts/LeeSeoyun.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'LeeSeoyun', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.Main-Title {
+    font-size: 80px;
+    text-align: center;
+    padding: 20px;
+}
+
+.Main-Title span:nth-child(1) {
+    color: #75A1E7;
+    opacity: 0.6;
+}
+
+.Main-Title span:nth-child(2) {
+    color: #A39B9B;
+    opacity: 0.65;
+}
+
+/* 태블릿 (768px 이하) */
+@media (max-width: 768px) {
+    .Main-Title {
+        font-size: 60px;
+        padding: 15px;
+    }
+}
+
+/* 모바일 (480px 이하) */
+@media (max-width: 480px) {
+    .Main-Title {
+        font-size: 40px;
+        padding: 10px;
+    }
+}
+
+/* 작은 모바일 (320px 이하) */
+@media (max-width: 320px) {
+    .Main-Title {
+        font-size: 32px;
+        padding: 8px;
+    }
+}
