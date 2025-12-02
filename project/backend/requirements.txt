@@ -3,3 +3,4 @@ uvicorn[standard]==0.38.0
 python-dotenv==1.2.1
 SQLAlchemy==2.0.25
 pymysql==1.1.0
+cryptography==46.0.3
