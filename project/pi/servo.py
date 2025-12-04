@@ -54,6 +54,9 @@ if __name__ == "__main__":
         move_opposite(90)
         sleep(1)
 
+        move_opposite(0)
+        sleep(1)
+
     finally:
         servo1.stop()
         servo2.stop()
