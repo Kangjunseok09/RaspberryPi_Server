@@ -4,6 +4,7 @@ from datetime import datetime
 
 from ..models import Sensor, SensorLog
 from .deps import get_db
+from .. import schemas   
 
 router = APIRouter(
     prefix="/api",
@@ -85,3 +86,9 @@ def get_current_status(db: Session = Depends(get_db)):
         "level_unit": "cm",
         "updated_at": log.created_at
     }
+
+@router.get("/sensors", response_model=list[schemas.SensorOut])
+def list_sensors(db: Session = Depends(get_db)):
+    
+    sensors = db.query(Sensor).order_by(Sensor.id).all()
+    return sensors
