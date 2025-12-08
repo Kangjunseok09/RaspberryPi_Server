@@ -1,0 +1,85 @@
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('/fonts/LeeSeoyun.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'LeeSeoyun', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    padding: 0.1rem;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid rgba(163, 155, 155, 0.3);
+}
+
+.footer-container img {
+    cursor: pointer;
+}
+
+.Car-Off {
+    width : 4.5rem;
+    margin-top : 1rem;
+}
+
+.Car-On {
+    width : 4.5rem;
+    margin-top : 1rem;
+}
+
+.Setting-Off {
+    width : 3rem;
+    margin-top : 0.5rem;
+}
+
+.Setting-On {
+    width : 3rem;
+    margin-top : 0.5rem;
+}
+
+.Bell-Off {
+    width : 3.3rem;
+    margin-right : 0.5rem;
+}
+
+.Bell-On {
+    width : 3.3rem;
+    margin-right : 0.5rem;
+}
+
+.bell-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #FF4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid white;
+}

@@ -36,6 +36,20 @@
     font-weight: bold;
 }
 
+.setting-error {
+    text-align: center;
+    color: #FF6B6B;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.setting-error {
+    text-align: center;
+    color: #FF6B6B;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
 /* 단계 선택 버튼 */
 .level-selector {
     display: flex;

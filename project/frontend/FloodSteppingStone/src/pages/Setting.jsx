@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Footer from '../components/Footer'
 import '../styles/Setting.css'
+import { fetchLedColors, updateLedColor } from '../api/ledApi'
 
 function Setting() {
     const [selectedLevel, setSelectedLevel] = useState(1) // 현재 선택된 단계
@@ -8,14 +9,13 @@ function Setting() {
     const [level2Color, setLevel2Color] = useState('#FFD93D') // 2단계 노랑
     const [level3Color, setLevel3Color] = useState('#FF6B6B') // 3단계 빨강
     const [buzzerVolume, setBuzzerVolume] = useState(50)
+    const [error, setError] = useState(null)
 
     const lightColors = [
-        { name: '파랑', color: '#75A1E7' },
-        { name: '빨강', color: '#FF6B6B' },
-        { name: '노랑', color: '#FFD93D' },
-        { name: '초록', color: '#6BCF7F' },
-        { name: '보라', color: '#9B59B6' },
-        { name: '주황', color: '#FF8C42' },
+        { name: '파랑', color: '#0000FF' },
+        { name: '빨강', color: '#FF0000' },
+        { name: '초록', color: '#00FF00' },
+        { name: '핑크', color: '#fa0019' },
     ]
 
     // localStorage에서 설정 불러오기
@@ -29,22 +29,49 @@ function Setting() {
         if (savedLevel2Color) setLevel2Color(savedLevel2Color)
         if (savedLevel3Color) setLevel3Color(savedLevel3Color)
         if (savedVolume) setBuzzerVolume(parseInt(savedVolume))
+
+        const loadLedColors = async () => {
+            try {
+                const colors = await fetchLedColors()
+                if (colors.normal) setLevel1Color(colors.normal)
+                if (colors.warning) setLevel2Color(colors.warning)
+                if (colors.danger) setLevel3Color(colors.danger)
+            } catch (err) {
+                console.error(err)
+                setError('LED 색상 정보를 불러오지 못했습니다.')
+            }
+        }
+
+        loadLedColors()
     }, [])
 
     // 단계별 조명 색상 변경
+    const persistLedColor = async (stateName, color) => {
+        try {
+            await updateLedColor(stateName, color)
+            setError(null)
+        } catch (err) {
+            console.error(err)
+            setError('LED 색상 저장에 실패했습니다.')
+        }
+    }
+
     const handleLevel1ColorChange = (color) => {
         setLevel1Color(color)
         localStorage.setItem('level1Color', color)
+        persistLedColor('normal', color)
     }
 
     const handleLevel2ColorChange = (color) => {
         setLevel2Color(color)
         localStorage.setItem('level2Color', color)
+        persistLedColor('warning', color)
     }
 
     const handleLevel3ColorChange = (color) => {
         setLevel3Color(color)
         localStorage.setItem('level3Color', color)
+        persistLedColor('danger', color)
     }
 
     // 부저 볼륨 변경
@@ -77,6 +104,7 @@ function Setting() {
             <div className="setting-container">
                 <div className="setting-section">
                     <h2 className="setting-section-title">조명 색상 변경</h2>
+                    {error && <p className="setting-error">{error}</p>}
 
                     {/* 단계 선택 버튼 */}
                     <div className="level-selector">

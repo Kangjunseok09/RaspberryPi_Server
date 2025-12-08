@@ -1,0 +1,200 @@
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('/fonts/LeeSeoyun.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 3rem;
+    color: #999;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.modal-close:hover {
+    color: #333;
+    transform: scale(1.1);
+}
+
+
+
+/* 모달 제목 */
+.modal-content h2 {
+    font-family: 'LeeSeoyun', sans-serif;
+    font-size: 2.5rem;
+    color: #333;
+    margin-top: 0;
+    text-align: center;
+
+}
+
+.modal-title-flood {
+    color: #75A1E7;
+}
+
+.modal-title-stone {
+    color: #808080;
+}
+
+.Modal-img {
+    width: 6rem;
+    height: 6rem;
+    object-fit: contain;
+    margin-right: 1rem;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+
+/* 모달 설명 */
+.modal-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.modal-description p {
+    margin-bottom: 1rem;
+}
+
+.modal-description ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1.5rem;
+}
+
+.modal-description ul li {
+    padding: 0.8rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: #555;
+}
+
+.modal-description ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #75A1E7;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 태블릿 (768px 이하) */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 2rem;
+        max-width: 90%;
+    }
+
+    .modal-content h2 {
+        font-size: 2rem;
+    }
+
+    .modal-description {
+        font-size: 1.1rem;
+    }
+
+    .modal-close {
+        font-size: 2.5rem;
+    }
+}
+
+/* 모바일 (480px 이하) */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+        max-height: 85vh;
+    }
+
+    .modal-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .modal-description {
+        font-size: 1rem;
+    }
+
+    .modal-description ul li {
+        padding: 0.6rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .modal-close {
+        font-size: 2rem;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .Modal-img {
+        width: 4rem;
+        height: 4rem;
+        margin-right: 0.5rem;
+    }
+}

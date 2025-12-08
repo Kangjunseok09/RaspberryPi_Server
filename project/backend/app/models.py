@@ -29,3 +29,12 @@ class SensorLog(Base):
     created_at = Column(DateTime(timezone=True), nullable=False, default=utcnow)
 
     sensor = relationship("Sensor", back_populates="logs")
+
+
+class LedColor(Base):
+    __tablename__ = "led_colors"
+
+    id = Column(Integer, primary_key=True, index=True)
+    state = Column(String(20), unique=True, nullable=False)
+    color_hex = Column(String(7), nullable=False, default="#00FF00")
+    updated_at = Column(DateTime(timezone=True), nullable=False, default=utcnow, onupdate=utcnow)

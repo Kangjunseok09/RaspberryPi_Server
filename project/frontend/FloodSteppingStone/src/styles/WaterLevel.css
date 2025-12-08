@@ -1,0 +1,117 @@
+.Car-Off {
+    cursor: pointer;
+}
+
+.Page-Title {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.highlight-gray{
+    color: #808080;
+}
+
+.highlight-blue {
+    color: #75A1E7;
+}
+
+.water-level-image-container {
+    display: flex;
+    justify-content: center;
+    margin: 120px 0 20px 0;
+}
+
+.water-level-image {
+    width: 100%;
+    max-width: 400px;
+}
+
+.warning-message-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.warning-message {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.warning-message.safe {
+    background-color: #e8f5e9;
+    border: 2px solid #4caf50;
+}
+
+.warning-message.warning {
+    background-color: #f1f8e9;
+    border: 2px solid #97e476;
+}
+
+.warning-message.danger {
+    background-color: #fff3e0;
+    border: 2px solid #ffbd59;
+}
+
+.warning-message.critical {
+    background-color: #ffebee;
+    border: 2px solid #ff5757;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 4px 16px rgba(255, 87, 87, 0.4);
+    }
+}
+
+.warning-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.warning-text {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.warning-message.safe .warning-text {
+    color: #2e7d32;
+}
+
+.warning-message.warning .warning-text {
+    color: #558b2f;
+}
+
+.warning-message.danger .warning-text {
+    color: #e65100;
+}
+
+.warning-message.critical .warning-text {
+    color: #c62828;
+}

@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .database import Base, engine
 from . import models
-from .routers import sensors
+from .routers import sensors, led
 
 Base.metadata.create_all(bind=engine)
 
@@ -23,6 +23,7 @@ app.add_middleware(
 )
 
 app.include_router(sensors.router)
+app.include_router(led.router)
 
 @app.get("/")
 def read_root():

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Footer from '../components/Footer'
 import '../styles/WaterLevel.css'
-import { fetchCurrentStatus, createNotification, openWindow, MOCK_MODE } from '../api/waterLevelApi'
+import { fetchCurrentStatus, createNotification, MOCK_MODE } from '../api/waterLevelApi'
 
 function WaterLevel() {
     const [sensor1Active, setSensor1Active] = useState(false)
@@ -82,10 +82,9 @@ function WaterLevel() {
             if (!bothSensorsStartTime) {
                 setBothSensorsStartTime(Date.now())
 
-                // 5초 후 창문 열기 알림
+                // 5초 후 경고 알림
                 bothSensorsTimeoutRef.current = setTimeout(async () => {
                     await createNotification(3)
-                    await openWindow()
                 }, 5000)
             }
         } else {

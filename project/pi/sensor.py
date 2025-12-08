@@ -16,6 +16,12 @@ BLUE_PIN  = 25
 
 BACKEND_BASE_URL = "http://10.150.2.4:8000"
 SENSOR_ID = 1
+LED_COLORS = {
+    "normal": "#00FF00",
+    "warning": "#FFA500",
+    "danger": "#FF0000",
+}
+LED_REFRESH_INTERVAL = 0.5  # seconds
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -90,26 +96,65 @@ def stage_danger_beep():
     time.sleep(1)
 
 
-def set_led_color(r, g, b):
+def fetch_led_colors():
+    global LED_COLORS
+    try:
+        res = requests.get(f"{BACKEND_BASE_URL}/api/led/colors", timeout=1.0)
+        res.raise_for_status()
+        data = res.json()
+        LED_COLORS = {item["state"]: item["color_hex"] for item in data}
+        print("[API] led colors updated:", LED_COLORS)
+    except Exception as e:
+        print("[API] fetch_led_colors error:", e)
+
+
+def hex_to_duty(color_hex: str):
+    color_hex = color_hex.lstrip("#")
+    r = int(color_hex[0:2], 16) / 255
+    g = int(color_hex[2:4], 16) / 255
+    b = int(color_hex[4:6], 16) / 255
+    return r, g, b
+
+
+def set_led_color(r_norm, g_norm, b_norm):
+    # Scale to 0-100 for common-cathode LED (1.0 = fully on)
+    r = max(0, min(100, r_norm * 100))
+    g = max(0, min(100, g_norm * 100))
+    b = max(0, min(100, b_norm * 100))
     red_pwm.ChangeDutyCycle(r)
     green_pwm.ChangeDutyCycle(g)
     blue_pwm.ChangeDutyCycle(b)
 
 
+def apply_led_state(state: str):
+    color_hex = LED_COLORS.get(state, "#00FF00")
+    r, g, b = hex_to_duty(color_hex)
+    set_led_color(r, g, b)
+
+
 def led_green():
-    set_led_color(0, 100, 0)
+    apply_led_state("normal")
 
 
 def led_orange():
-    set_led_color(100, 30, 0)
+    apply_led_state("warning")
 
 
 def led_red():
-    set_led_color(100, 0, 0)
+    apply_led_state("danger")
 
 
 def led_off():
     set_led_color(0, 0, 0)
+
+
+def apply_led_for_stage(stage):
+    if stage >= 3:
+        led_red()
+    elif stage == 2:
+        led_orange()
+    else:
+        led_green()
 
 
 def send_stage_log(stage):
@@ -136,8 +181,11 @@ if __name__ == "__main__":
     danger_done = False
     both_wet_start = None
     windows_open = False
-
     current_stage = 0
+    fetch_led_colors()
+    apply_led_for_stage(current_stage)
+    last_led_refresh = time.time()
+
     send_stage_log(current_stage)
 
     try:
@@ -188,12 +236,21 @@ if __name__ == "__main__":
                     windows_open = True
                     stage_danger_beep()
                     danger_done = True
-                    led_red()
                     new_stage = 3
+
+                if danger_done:
+                    new_stage = 3
+                    led_red()
+
+            if time.time() - last_led_refresh > LED_REFRESH_INTERVAL:
+                fetch_led_colors()
+                apply_led_for_stage(current_stage)
+                last_led_refresh = time.time()
 
             if new_stage != current_stage:
                 current_stage = new_stage
                 send_stage_log(current_stage)
+                apply_led_for_stage(current_stage)
 
             time.sleep(0.5)
 

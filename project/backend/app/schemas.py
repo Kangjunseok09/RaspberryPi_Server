@@ -38,3 +38,15 @@ class SensorOut(BaseModel):
     class Config:
         from_attributes = True
 
+
+class LedColorOut(BaseModel):
+    state: str
+    color_hex: str
+    updated_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class LedColorUpdate(BaseModel):
+    color_hex: str

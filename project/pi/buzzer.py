@@ -31,6 +31,8 @@ def stage_danger():
     print("Stage 3 - Danger (긴 삐—)")
     beep(3000, 1.0)
     time.sleep(1)
+    beep(3000, 1.0)
+    time.sleep(1)
 
 try:
     print("=== Stage Pattern Test ===")
